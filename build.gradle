@@ -19,7 +19,16 @@ archivesBaseName = mod_id
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 galacticraft {
+	// Pulls the latest release version of Galacticraft from maven
 	useLatestRelease()
+	
+	// Or use the latest snapshot version
+	// useLatestSnapshot()
+	
+	// you can also specify the exact version to pull from maven
+	// NOTE: Make sure the version exists, you can view all available
+	// versions by running the 'listAvailableVersions' task
+	// gcVersion('4.0.2.284')
 }
 
 minecraft {
