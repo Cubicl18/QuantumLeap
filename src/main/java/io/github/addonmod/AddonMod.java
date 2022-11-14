@@ -15,7 +15,6 @@ import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 @Mod(
         modid = Reference.MOD_ID,
         name = Reference.MOD_NAME,
-        useMetadata = true,
         version = Reference.MOD_VERSION,
         dependencies = Reference.MOD_DEPENDENCIES,
         acceptedMinecraftVersions = Reference.MOD_MC_VERSION_RANGE

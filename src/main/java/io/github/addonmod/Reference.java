@@ -1,13 +1,13 @@
 package io.github.addonmod;
 
 public class Reference {
-	
+
     // Mod info
-	public static final String MOD_NAME = "@MODNAME@";
-    public static final String MOD_ID = "@MODID@";
-    public static final String MOD_VERSION = "@VERSION@";
+	public static final String MOD_NAME = "Addon Template";
+    public static final String MOD_ID = "addon-template";
+    public static final String MOD_VERSION = "1.0.0";
     public static final String MOD_CHANNEL = MOD_ID;
-    public static final String MOD_MC_VERSION_RANGE = "@MC_VERSION_RANGE@";
+    public static final String MOD_MC_VERSION_RANGE = "[1.12,1.13)";
 
     // Paths
     public static final String TEXTURE_PATH_GUI = "textures/gui/";
@@ -18,21 +18,16 @@ public class Reference {
     public static final String TEXTURE_PATH_ITEMS = "textures/items/";
     public static final String TEXTURE_PATH_PARTICLES = "textures/particles/";
     public static final String MODEL_PATH = "models/";
-    
+
     // MOD ID's
     public static final String MOD_FORGE = "forge";
-    public static final String MOD_FORGE_VERSION = "@FORGE_VERSION@";
-    public static final String MOD_FORGE_VERSION_MIN = "14.23.5.2860";
-    
+    public static final String MOD_FORGE_VERSION_MIN = "14.23.5.2847";
+
     public static final String MOD_GALACTICRAFT = "galacticraftcore";
-    
-    // This value is set when you run the Build task and is derived from the galacticraft dependency version
-    public static final String MOD_GALACTICRAFT_VERSION_MIN = "@GC_VERSION@";
-    
+
     public static final String FORGE_DEPENDENCY = "required-after:" + MOD_FORGE + "@[" + MOD_FORGE_VERSION_MIN + ",); ";
-    public static final String GC_DEPENDENCY = "required-after:" + MOD_GALACTICRAFT + "@[" + MOD_GALACTICRAFT_VERSION_MIN + ",); ";
-    
+    public static final String GC_DEPENDENCY = "required-after:" + MOD_GALACTICRAFT + "; ";
+
     // Dependencies
-    public static final String MOD_DEPENDENCIES =
-            FORGE_DEPENDENCY + GC_DEPENDENCY;
+    public static final String MOD_DEPENDENCIES = FORGE_DEPENDENCY + GC_DEPENDENCY;
 }

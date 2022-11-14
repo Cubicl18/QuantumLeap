@@ -1,34 +1,20 @@
-buildscript {
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle'
-    }
-}
-
 plugins {
-	id "net.galacticraft.gradle.addon" version "1.0.6"
+	id 'idea'
+	id 'eclipse'
+	id 'maven-publish'
+	id 'net.galacticraft.addon'
 }
-
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
 
 version = "${minecraft_version}-${mod_version}"
 group = mod_base_package
 archivesBaseName = mod_id
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8)
-
 galacticraft {
-	// Pulls the latest release version of Galacticraft from maven
-	useLatestRelease()
-	
-	// Or use the latest snapshot version
-	// useLatestSnapshot()
-	
-	// you can also specify the exact version to pull from maven
-	// NOTE: Make sure the version exists, you can view all available
-	// versions by running the 'listAvailableVersions' task
-	// gcVersion('4.0.2.284')
+  // One must be used, each one is checked in the order
+  // listed below until the version property is set
+  //version('4.0.4')
+  //latestSnapshot()
+  latestRelease()
 }
 
 minecraft {
@@ -48,56 +34,12 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
         }
     }
 }
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-}
-
-def resourceTargets = ['mcmod.info', 'pack.mcmeta']
-def intoTargets = ["$rootDir/out/production/resources/", "$rootDir/out/production/${project.name}.main/", "$rootDir/bin/main/"]
-def replaceProperties = [mod_id: mod_id, mod_name: mod_name, mod_version: mod_version,
-        mod_authors: mod_authors, mod_description: mod_description.replace('\n', '\\n'), minecraft_version: minecraft_version]
-
-processResources {
-    inputs.properties replaceProperties
-    replaceProperties.put 'project', project
-
-    filesMatching(resourceTargets) {
-        expand replaceProperties
-    }
-
-    intoTargets.each { target ->
-        if (file(target).exists()) {
-            copy {
-                from(sourceSets.main.resources) {
-                    include resourceTargets
-                    expand replaceProperties
-                }
-                into target
-            }
-        }
-    }
-}
-
-tokens {
-	replace ([
-		"@VERSION@": mod_version,
-		"@MODNAME@": mod_name,
-		"@MODID@": mod_id,
-		"@MC_VERSION_RANGE@": minecraft_version_range,
-		"@FORGE_VERSION@": forge_version
-	])
 }
 
 jar {
