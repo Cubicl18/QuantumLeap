@@ -1,5 +1,14 @@
-plugins {
-    id 'net.galacticraft.addon' version '1.0.1'
+pluginManagement {
+    repositories {
+		maven {
+			url = 'https://maven.galacticraft.net/repository/gradle/'
+		}
+    }
 }
+
+plugins {
+    id "net.galacticraft.addon" version "1.0.7"
+}
+
 
 rootProject.name = "addon-template"

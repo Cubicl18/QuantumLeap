@@ -11,49 +11,61 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class ClientProxy implements IProxy {
+public class ClientProxy implements IProxy
+{
 
-	private final Minecraft MINECRAFT = Minecraft.getMinecraft();
+    private final Minecraft MINECRAFT = Minecraft.getMinecraft();
 
-	@Override
-	public void preInit(FMLPreInitializationEvent event) {
-	}
+    @Override
+    public void preInit(FMLPreInitializationEvent event)
+    {
+    }
 
-	@Override
-	public void init(FMLInitializationEvent event) {
-	}
+    @Override
+    public void init(FMLInitializationEvent event)
+    {
+    }
 
-	@Override
-	public void postInit(FMLPostInitializationEvent event) {
-	}
+    @Override
+    public void postInit(FMLPostInitializationEvent event)
+    {
+    }
 
-	@Nullable
-	@Override
-	public EntityPlayer getClientPlayer() {
-		return MINECRAFT.player;
-	}
+    @Nullable
+    @Override
+    public EntityPlayer getClientPlayer()
+    {
+        return MINECRAFT.player;
+    }
 
-	@Nullable
-	@Override
-	public World getClientWorld() {
-		return MINECRAFT.world;
-	}
+    @Nullable
+    @Override
+    public World getClientWorld()
+    {
+        return MINECRAFT.world;
+    }
 
-	@Override
-	public IThreadListener getThreadListener(final MessageContext context) {
-		if (context.side.isClient()) {
-			return MINECRAFT;
-		} else {
-			return context.getServerHandler().player.server;
-		}
-	}
+    @Override
+    public IThreadListener getThreadListener(final MessageContext context)
+    {
+        if (context.side.isClient())
+        {
+            return MINECRAFT;
+        } else
+        {
+            return context.getServerHandler().player.mcServer;
+        }
+    }
 
-	@Override
-	public EntityPlayer getPlayer(final MessageContext context) {
-		if (context.side.isClient()) {
-			return MINECRAFT.player;
-		} else {
-			return context.getServerHandler().player;
-		}
-	}
+    @Override
+    public EntityPlayer getPlayer(final MessageContext context)
+    {
+        if (context.side.isClient())
+        {
+            return MINECRAFT.player;
+        } else
+        {
+            return context.getServerHandler().player;
+        }
+    }
 }
